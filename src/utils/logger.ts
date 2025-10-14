@@ -1,4 +1,4 @@
-import Chalk from "chalk";
+import { styleText } from "node:util";
 import SupportsColors from "supports-color";
 
 export class Logger {
@@ -20,7 +20,7 @@ export class Logger {
     static debug(str: any) {
         if (Logger.isDebug) {
             if (Logger.colors && SupportsColors.stdout) {
-                console.log(Chalk.grey(str));
+                console.log(styleText("grey", str));
             } else {
                 console.log(str);
             }
@@ -36,7 +36,7 @@ export class Logger {
     static info(str: any) {
         if (Logger.isInfo) {
             if (Logger.colors && SupportsColors.stdout) {
-                console.log(Chalk.green(str));
+                console.log(styleText("green", str));
             } else {
                 console.log(str);
             }
@@ -46,7 +46,7 @@ export class Logger {
     static warn(str: any) {
         if (Logger.isWarn) {
             if (Logger.colors && SupportsColors.stdout) {
-                console.log(Chalk.yellow(str));
+                console.log(styleText("yellow", str));
             } else {
                 console.log(str);
             }
@@ -56,7 +56,7 @@ export class Logger {
     static error(str: any) {
         if (Logger.isError) {
             if (Logger.colors && SupportsColors.stderr) {
-                console.error(Chalk.red(str));
+                console.error(styleText("red", str));
             } else {
                 console.error(str);
             }
